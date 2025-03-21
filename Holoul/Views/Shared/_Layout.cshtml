@@ -3,36 +3,71 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Holoul</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Holoul.styles.css" asp-append-version="true" />
+    <title>AI Solutions | Intelligent Tools for Modern Business</title>
+    <meta name="description"
+          content="AI Solutions provides advanced artificial intelligence tools and services to transform your business operations and solve complex problems." />
+    <meta name="author" content="AI Solutions" />
+    <meta property="og:image"
+          content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="/css/holoul.css" />
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Holoul</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                        </li>
-                    </ul>
-                </div>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="32"
+                     height="32"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     class="lucide lucide-brain">
+                    <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5V5a2 2 0 0 0 2 2h.5A2.5 2.5 0 0 1 17 9.5a2.5 2.5 0 0 1-2.5 2.5.5.5 0 0 0-.5.5.5.5 0 0 0 .5.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5h-.5a2 2 0 0 0-2 2v.5A2.5 2.5 0 0 1 9.5 22 2.5 2.5 0 0 1 7 19.5v-.5a2 2 0 0 0-2-2h-.5A2.5 2.5 0 0 1 2 14.5 2.5 2.5 0 0 1 4.5 12h.5a2 2 0 0 0 2-2v-.5A2.5 2.5 0 0 1 9.5 7h.5a2 2 0 0 0 2-2v-.5A2.5 2.5 0 0 1 9.5 2z"></path>
+                    <path d="M7 16.5v.5a2 2 0 0 0 2 2h.5"></path>
+                    <path d="M7 7v-.5a2 2 0 0 1 2-2h.5"></path>
+                    <path d="M16.5 7h.5a2 2 0 0 1 2 2v.5"></path>
+                    <path d="M16.5 16.5h.5a2 2 0 0 0 2-2v-.5"></path>
+                </svg>
+                <span>HOLOUL</span>
             </div>
-            <partial name="_LoginPartial" />
-        </nav>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li><a href="#categories" class="nav-link">Categories</a></li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#contact" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -40,14 +75,151 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer" id="contact">
         <div class="container">
-            &copy; 2025 - Holoul - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="footer-grid">
+                <!-- Company Info -->
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="32"
+                             height="32"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             class="lucide lucide-brain">
+                            <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5V5a2 2 0 0 0 2 2h.5A2.5 2.5 0 0 1 17 9.5a2.5 2.5 0 0 1-2.5 2.5.5.5 0 0 0-.5.5.5.5 0 0 0 .5.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5h-.5a2 2 0 0 0-2 2v.5A2.5 2.5 0 0 1 9.5 22 2.5 2.5 0 0 1 7 19.5v-.5a2 2 0 0 0-2-2h-.5A2.5 2.5 0 0 1 2 14.5 2.5 2.5 0 0 1 4.5 12h.5a2 2 0 0 0 2-2v-.5A2.5 2.5 0 0 1 9.5 7h.5a2 2 0 0 0 2-2v-.5A2.5 2.5 0 0 1 9.5 2z"></path>
+                            <path d="M7 16.5v.5a2 2 0 0 0 2 2h.5"></path>
+                            <path d="M7 7v-.5a2 2 0 0 1 2-2h.5"></path>
+                            <path d="M16.5 7h.5a2 2 0 0 1 2 2v.5"></path>
+                            <path d="M16.5 16.5h.5a2 2 0 0 0 2-2v-.5"></path>
+                        </svg>
+                        <span>HOLOUL</span>
+                    </div>
+                    <p>
+                        Empowering organizations with intelligent AI tools to solve their
+                        most complex challenges.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 viewBox="0 0 24 24"
+                                 fill="currentColor">
+                                <path d="M22 5.79997C21.2483 6.12606 20.4534 6.34163 19.64 6.43997C20.4982 5.92729 21.1413 5.12075 21.45 4.16997C20.6436 4.65003 19.7608 4.98826 18.84 5.16997C18.2245 4.50254 17.405 4.05826 16.5098 3.90682C15.6147 3.75537 14.6945 3.90532 13.8938 4.33315C13.093 4.76099 12.4569 5.4425 12.0852 6.2708C11.7135 7.09911 11.6273 8.02736 11.84 8.90997C10.2094 8.82749 8.61444 8.40292 7.15865 7.66383C5.70287 6.92474 4.41885 5.88766 3.39 4.61997C3.02914 5.25013 2.83952 5.96379 2.84 6.68997C2.83872 7.36435 3.00422 8.02858 3.32176 8.62353C3.63929 9.21848 4.09823 9.72568 4.66 10.1C4.00798 10.0822 3.36989 9.9098 2.8 9.58997V9.63997C2.80489 10.5849 3.13599 11.4993 3.73731 12.2279C4.33864 12.9565 5.17326 13.4486 6.1 13.62C5.74326 13.73 5.37287 13.7844 5 13.78C4.74189 13.7793 4.48442 13.7565 4.23 13.71C4.49391 14.5128 5.00462 15.2112 5.69107 15.7122C6.37753 16.2131 7.20558 16.4949 8.06 16.52C6.6172 17.6526 4.83588 18.2522 3 18.25C2.66574 18.2517 2.33174 18.2334 2 18.1951C3.87443 19.3991 6.05881 20.0041 8.29 20C15.84 20 19.96 13.84 19.96 8.50997C19.96 8.33997 19.96 8.16997 19.95 7.99997C20.7542 7.41852 21.4535 6.6916 22 5.86997L22 5.79997Z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 viewBox="0 0 24 24"
+                                 fill="currentColor">
+                                <path d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z"></path>
+                                <path d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z"></path>
+                                <path d="M11 19H12C12.5523 19 13 18.5523 13 18V14.5C13 13.9477 13.4477 13.5 14 13.5C14.5523 13.5 15 13.9477 15 14.5V18C15 18.5523 15.4477 19 16 19H17C17.5523 19 18 18.5523 18 18V13.5C18 11.567 16.433 10 14.5 10C13.2744 10 12.1933 10.6424 11.5 11.6H11V10C11 9.44771 10.5523 9 10 9H9C8.44772 9 8 9.44772 8 10V18C8 18.5523 8.44772 19 9 19H11Z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 viewBox="0 0 24 24"
+                                 fill="currentColor">
+                                <path d="M12 2C6.477 2 2 6.477 2 12C2 16.419 4.865 20.167 8.839 21.501C9.339 21.591 9.5 21.275 9.5 21.001C9.5 20.751 9.494 20.051 9.49 19.251C6.828 19.781 6.25 17.791 6.25 17.791C5.797 16.668 5.137 16.351 5.137 16.351C4.23 15.731 5.204 15.741 5.204 15.741C6.205 15.811 6.73 16.782 6.73 16.782C7.63 18.302 9.07 17.838 9.52 17.573C9.608 16.908 9.858 16.445 10.138 16.181C7.995 15.911 5.736 15.042 5.736 11.171C5.736 10.055 6.125 9.141 6.75 8.424C6.652 8.162 6.305 7.191 6.847 5.898C6.847 5.898 7.693 5.621 9.477 6.828C10.292 6.599 11.152 6.486 12.002 6.481C12.852 6.486 13.712 6.599 14.529 6.828C16.306 5.621 17.152 5.898 17.152 5.898C17.695 7.191 17.347 8.162 17.252 8.424C17.875 9.141 18.262 10.055 18.262 11.171C18.262 15.055 16 15.907 13.848 16.171C14.195 16.499 14.512 17.156 14.512 18.144C14.512 19.552 14.5 20.661 14.5 21.001C14.5 21.271 14.656 21.591 15.165 21.494C19.135 20.156 22 16.414 22 12C22 6.477 17.523 2 12 2Z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-column link-c">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#categories">Solutions</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                            <span>contact@aisolutions.com</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>+972 (555) 123-4567</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>Palestine - Jenin City</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; <span id="current-year"></span> AI Solutions Team. All rights
+                    reserved.
+                </p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script src="/js/Holoul.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
