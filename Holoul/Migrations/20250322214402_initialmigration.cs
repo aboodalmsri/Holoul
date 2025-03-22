@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Holoul.Migrations
 {
     /// <inheritdoc />
-    public partial class up1 : Migration
+    public partial class initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -79,6 +79,22 @@ namespace Holoul.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categorys", x => x.CategoryID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FeedBacks",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", maxLength: 36, nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", maxLength: 5000, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FeedBacks", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -306,6 +322,9 @@ namespace Holoul.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "FeedBacks");
 
             migrationBuilder.DropTable(
                 name: "Problems");

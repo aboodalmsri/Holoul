@@ -19,11 +19,20 @@ public class EDbContext : IdentityDbContext<HoloulUser, IdentityRole, string>
     public DbSet<AISolutionStep> AISolutionSteps { get; set; }
     public DbSet<Category> Categorys { get; set; }
     public DbSet<Problem> Problems { get; set; }
+    public DbSet<Feedback> FeedBacks { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
+        builder.Entity<Feedback>()
+            .HasKey(f => f.id);
+
+        builder.Entity<Feedback>()
+            .Property(f => f.id)
+            .HasMaxLength(36);
+
 
         builder.ApplyConfiguration(new ApplicationUserEntityConfiguration());
     }

@@ -1,38 +1,52 @@
-﻿@{
-    Layout = "_Layout";
+﻿@model Holoul.Models.Feedback
+@{
+    ViewData["Title"] = "Contact Us";
 }
-<link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
+<h1>@ViewData["Title"]</h1>
 
-<body>
-    <div class="cocss">
-        <div class="contactp">
-            <p>Contact us</p>
-        </div>
-        <div class="contactdis">
-            <div class="contactfl">
-                <div class="contactf">
-                    <input type="text" id="f" placeholder="First Name">
-                </div>
-                <div class="contactl">
-                    <input type="text" id="l" placeholder="Last Name">
-                </div>
-            </div>
-            <div class="contactep">
-                <div class="contacte">
-                    <input type="email" id="e" placeholder="Email">
-                </div>
-                <div class="contactp">
-                    <input type="text" id="p" placeholder="Phone">
-                </div>
-            </div>
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+else if (ViewBag.Errormsg != null)
+{
+    <div class="alert alert-danger">@ViewBag.Errormsg</div>
+}
 
-            <div class="contactm">
-                <textarea name="massege" id="m" style="width: 399px; height: 90px;"></textarea>
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="contact" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="vontactbu">
-                <button>Submite</button>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-
-        </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <textarea asp-for="Message" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+            @Html.AntiForgeryToken()
+        </form>
     </div>
-</body>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

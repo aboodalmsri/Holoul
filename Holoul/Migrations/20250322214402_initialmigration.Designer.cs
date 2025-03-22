@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Holoul.Migrations
 {
     [DbContext(typeof(EDbContext))]
-    [Migration("20250321143202_up1")]
-    partial class up1
+    [Migration("20250322214402_initialmigration")]
+    partial class initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -173,6 +173,40 @@ namespace Holoul.Migrations
                     b.HasKey("CategoryID");
 
                     b.ToTable("Categorys");
+                });
+
+            modelBuilder.Entity("Holoul.Models.Feedback", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(5000)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("FeedBacks");
                 });
 
             modelBuilder.Entity("Holoul.Models.Problem", b =>
