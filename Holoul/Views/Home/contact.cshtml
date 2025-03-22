@@ -1,5 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "_Layout";
 }
+<link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
+
+<body>
+    <div class="cocss">
+        <div class="contactp">
+            <p>Contact us</p>
+        </div>
+        <div class="contactdis">
+            <div class="contactfl">
+                <div class="contactf">
+                    <input type="text" id="f" placeholder="First Name">
+                </div>
+                <div class="contactl">
+                    <input type="text" id="l" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="contactep">
+                <div class="contacte">
+                    <input type="email" id="e" placeholder="Email">
+                </div>
+                <div class="contactp">
+                    <input type="text" id="p" placeholder="Phone">
+                </div>
+            </div>
+
+            <div class="contactm">
+                <textarea name="massege" id="m" style="width: 399px; height: 90px;"></textarea>
+            </div>
+            <div class="vontactbu">
+                <button>Submite</button>
+            </div>
+
+        </div>
+    </div>
+</body>

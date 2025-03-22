@@ -1,0 +1,81 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.cocss {
+    display: flex;
+    position:absolute;
+    left:31%;
+    top:31%;
+}
+
+
+
+.contactp p {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 5%;
+    padding-left: 22px;
+}
+
+
+
+.contactdis {
+    background: #fffefe;
+    padding: 62px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 523px;
+}
+
+
+
+input {
+    width: 100%;
+    padding: 11px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px;
+    padding-left: 0px;
+    text-align: center;
+}
+
+
+.contactfl, .contactep {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .contactfl div, .contactep div {
+        width: 48%;
+    }
+
+
+.vontactbu button {
+    width: 102%;
+    padding: 10px;
+    background: #007BFF;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .vontactbu button:hover {
+        background: #0056b3;
+    }
+
+.vontactbu :hover {
+    background-color: rgb(108, 108, 253);
+}
