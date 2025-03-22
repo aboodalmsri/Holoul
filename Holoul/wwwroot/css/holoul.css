@@ -552,7 +552,6 @@ button {
 /* Testimonials */
 .testimonials {
     background-color: rgba(var(--secondary), 0.7);
-    margin-bottom: 45rem;
 }
 
 .testimonials-slider {
@@ -624,7 +623,6 @@ button {
     background-color: #1f2937;
     color: white;
     padding: 4rem 0;
-    z-index: 1;
 
 }
 
