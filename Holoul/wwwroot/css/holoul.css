@@ -61,6 +61,8 @@ ul {
     list-style: none;
 }
 
+
+
 button {
     cursor: pointer;
     border: none;
@@ -550,6 +552,7 @@ button {
 /* Testimonials */
 .testimonials {
     background-color: rgba(var(--secondary), 0.7);
+    margin-bottom: 45rem;
 }
 
 .testimonials-slider {
@@ -621,6 +624,8 @@ button {
     background-color: #1f2937;
     color: white;
     padding: 4rem 0;
+    z-index: 1;
+
 }
 
 .footer-grid {
