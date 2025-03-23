@@ -93,7 +93,7 @@ button {
     left: 0;
     right: 0;
     z-index: 50;
-    padding: 1rem 0;
+    padding: 7px 0;
     transition: all 0.3s ease;
     background-color: rgba(255, 255, 255, 0.8);
 }
@@ -129,6 +129,7 @@ button {
     .main-nav ul {
         display: flex;
         gap: 2rem;
+        margin-bottom:0;
     }
 
 .nav-link {
@@ -785,4 +786,13 @@ hr {
 
 .delay-600 {
     transition-delay: 600ms;
+}
+
+.navbar-nav {
+    display: flex;
+    padding-left: 0;
+    flex-direction:row;
+    margin-bottom: 0;
+    list-style: none;
+    gap: 30px;
 }
