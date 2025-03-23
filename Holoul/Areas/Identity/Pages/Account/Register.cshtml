@@ -1,7 +1,7 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -13,14 +13,14 @@
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="mb-3">
-                <label asp-for="Input.FirstName" class="form-label">الاسم الأول</label>
-                <input asp-for="Input.FirstName" class="form-control" placeholder="أدخل اسمك الأول" aria-required="true" />
+                <label asp-for="Input.FirstName" class="form-label">First Name</label>
+                <input asp-for="Input.FirstName" class="form-control" placeholder="Your first name.." aria-required="true" />
                 <span asp-validation-for="Input.FirstName" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
-                <label asp-for="Input.LastName" class="form-label">الاسم الأخير</label>
-                <input asp-for="Input.LastName" class="form-control" placeholder="أدخل اسمك الأخير" aria-required="true" />
+                <label asp-for="Input.LastName" class="form-label">Last Name</label>
+                <input asp-for="Input.LastName" class="form-control" placeholder="Your last name.." aria-required="true" />
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">

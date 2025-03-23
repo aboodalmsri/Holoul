@@ -3,7 +3,8 @@
 
 @inject SignInManager<HoloulUser> SignInManager
 @inject UserManager<HoloulUser> UserManager
-
+<link rel="stylesheet" href="~/css/holoul.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
