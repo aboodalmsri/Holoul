@@ -1,0 +1,57 @@
+﻿/* Google Translate Widget Styling */
+#google_translate_element {
+    margin-top: 1.5rem; /* Add spacing above the widget */
+    margin-bottom: 1rem; /* Add spacing below the widget */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align with the footer columns */
+}
+
+/* Style the container of the Google Translate widget */
+.goog-te-gadget {
+    font-family: var(--font-sans); /* Match the footer's font */
+    color: rgba(255, 255, 255, 0.7) !important; /* Match the footer's text color */
+    font-size: 0.875rem; /* Match the footer's font size */
+}
+
+    /* Style the "Select Language" text */
+    .goog-te-gadget span {
+        color: rgba(255, 255, 255, 0.7) !important; /* White text with slight opacity */
+    }
+
+/* Style the dropdown */
+.goog-te-combo {
+    background-color: #2d3748 !important; /* Slightly lighter than the footer background */
+    color: white !important; /* White text in the dropdown */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Subtle border */
+    border-radius: 0.25rem; /* Slight rounding for a modern look */
+    padding: 0.25rem 0.5rem; /* Adjust padding for better fit */
+    font-family: var(--font-sans); /* Match the footer's font */
+    font-size: 0.875rem; /* Match the footer's font size */
+    transition: background-color 0.2s ease; /* Smooth hover effect */
+}
+
+    /* Hover effect for the dropdown */
+    .goog-te-combo:hover {
+        background-color: #4a5568 !important; /* Slightly lighter on hover */
+    }
+
+    /* Style the dropdown options */
+    .goog-te-combo option {
+        background-color: #2d3748 !important; /* Match the dropdown background */
+        color: white !important; /* White text for options */
+    }
+
+/* Remove the "Powered by Google" text (optional, if allowed by Google's terms) */
+.goog-te-gadget > div > a {
+    display: none !important; /* Hide the "Powered by" link */
+}
+
+/* Ensure the widget fits well on smaller screens */
+@media (max-width: 767px) {
+    #google_translate_element {
+        justify-content: center; /* Center on mobile */
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}

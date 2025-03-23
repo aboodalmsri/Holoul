@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="~/css/holoul.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/google-trans.css" asp-append-version="true" />
     <title>AI Solutions | Intelligent Tools for Modern Business</title>
     <meta name="description"
           content="AI Solutions provides advanced artificial intelligence tools and services to transform your business operations and solve complex problems." />
@@ -134,6 +135,23 @@
                                 <path d="M12 2C6.477 2 2 6.477 2 12C2 16.419 4.865 20.167 8.839 21.501C9.339 21.591 9.5 21.275 9.5 21.001C9.5 20.751 9.494 20.051 9.49 19.251C6.828 19.781 6.25 17.791 6.25 17.791C5.797 16.668 5.137 16.351 5.137 16.351C4.23 15.731 5.204 15.741 5.204 15.741C6.205 15.811 6.73 16.782 6.73 16.782C7.63 18.302 9.07 17.838 9.52 17.573C9.608 16.908 9.858 16.445 10.138 16.181C7.995 15.911 5.736 15.042 5.736 11.171C5.736 10.055 6.125 9.141 6.75 8.424C6.652 8.162 6.305 7.191 6.847 5.898C6.847 5.898 7.693 5.621 9.477 6.828C10.292 6.599 11.152 6.486 12.002 6.481C12.852 6.486 13.712 6.599 14.529 6.828C16.306 5.621 17.152 5.898 17.152 5.898C17.695 7.191 17.347 8.162 17.252 8.424C17.875 9.141 18.262 10.055 18.262 11.171C18.262 15.055 16 15.907 13.848 16.171C14.195 16.499 14.512 17.156 14.512 18.144C14.512 19.552 14.5 20.661 14.5 21.001C14.5 21.271 14.656 21.591 15.165 21.494C19.135 20.156 22 16.414 22 12C22 6.477 17.523 2 12 2Z"></path>
                             </svg>
                         </a>
+                        <!-- google translate -->
+                        <section class="row" aria-labelledby="aspnetTitle">
+                            <h1 id="title"></h1>
+                        </section>
+                        <div id="google_translate_element"></div>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({
+                                    pageLanguage: 'en',
+                                    includedLanguages: 'af,sq,am,ar,hy,az,eu,be,bn,bs,bg,ca,ceb,ny,zh-CN,zh-TW,co,hr,cs,da,nl,en,eo,et,tl,fi,fr,fy,gl,ka,de,el,gu,ht,ha,haw,iw,hi,hmn,hu,is,ig,id,ga,it,ja,jw,kn,kk,km,ko,ku,ky,lo,la,lv,lt,lb',
+                                    layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+                                }, 'google_translate_element');
+                            }
+                        </script>
+                        <!-- google translate -->
+
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                     </div>
                 </div>
 
