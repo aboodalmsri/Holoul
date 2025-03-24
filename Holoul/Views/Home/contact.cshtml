@@ -1,6 +1,7 @@
 ﻿@model Holoul.Models.Feedback
 @{
-    ViewData["Title"] = "Contact Us";
+    Layout = "_Layout";
+    // ViewData["Title"] = "Contact Us";
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -14,6 +15,7 @@ else if (ViewBag.Errormsg != null)
 }
 
 <div class="row">
+    <h1>Contact Us</h1>
     <div class="col-md-8">
         <form asp-action="contact" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -44,7 +46,9 @@ else if (ViewBag.Errormsg != null)
         </form>
     </div>
 </div>
-
+@section Styles {
+    <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
+}
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
