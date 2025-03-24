@@ -36,6 +36,8 @@
         </form>
     </div>
 </div>
+
+
 @if (ViewBag.SuccessMessage != null)
 {
     <div class="alert alert-success">@ViewBag.SuccessMessage</div>
@@ -44,6 +46,8 @@ else if (ViewBag.Errormsg != null)
 {
     <div class="alert alert-danger">@ViewBag.Errormsg</div>
 }
+
+
 @section Styles {
     <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
 }

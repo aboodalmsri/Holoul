@@ -1,10 +1,12 @@
 ﻿using Holoul.Areas.Identity.Data;
 using Holoul.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Holoul.Controllers
 {
+    [Authorize(Roles = "User")]
     public class UserController : Controller
     {
         private readonly EDbContext _context;
