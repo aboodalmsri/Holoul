@@ -19,6 +19,13 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        int usersCount = _context.Users.Count();
+        int categorysCount = _context.Categorys.Count();
+
+
+        ViewData["UsersCount"] = usersCount;
+        ViewData["CategoriesCount"] = categorysCount;
+
         return View();
     }
 
