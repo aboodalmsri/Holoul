@@ -4,11 +4,6 @@
     
         <title>@ViewData["Title"]</title>
 
-        @RenderSection("Styles", required: false)
-    
-
-
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/holoul.css" asp-append-version="true" />
@@ -249,5 +244,6 @@
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module" asp-append-version="true"></script>
     <script src="~/js/Holoul.js"></script>
      @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Styles", required: false)
 </body>
 </html>

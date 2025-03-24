@@ -1,21 +1,11 @@
 ﻿@model Holoul.Models.Feedback
 @{
     Layout = "_Layout";
-    // ViewData["Title"] = "Contact Us";
-}
-<h1>@ViewData["Title"]</h1>
-
-@if (ViewBag.SuccessMessage != null)
-{
-    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
-}
-else if (ViewBag.Errormsg != null)
-{
-    <div class="alert alert-danger">@ViewBag.Errormsg</div>
+    ViewData["Title"] = "Contact Us";
 }
 
 <div class="row">
-    <h1>Contact Us</h1>
+    <h1>@ViewData["Title"]</h1>
     <div class="col-md-8">
         <form asp-action="contact" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -46,6 +36,14 @@ else if (ViewBag.Errormsg != null)
         </form>
     </div>
 </div>
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+else if (ViewBag.Errormsg != null)
+{
+    <div class="alert alert-danger">@ViewBag.Errormsg</div>
+}
 @section Styles {
     <link rel="stylesheet" href="~/css/contact.css" asp-append-version="true" />
 }
