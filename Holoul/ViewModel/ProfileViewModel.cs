@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Holoul.Models
 {
@@ -16,5 +17,6 @@ namespace Holoul.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        public List<Feedback> Feedbacks { get; set; } = new List<Feedback>();
     }
 }

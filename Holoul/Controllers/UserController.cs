@@ -3,6 +3,7 @@ using Holoul.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Holoul.Controllers
 {
@@ -17,11 +18,52 @@ namespace Holoul.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public IActionResult Index()
+        public IActionResult Dashbord()
         {
             return View();
         }
-        public async Task<IActionResult> Profile()
+        public IActionResult categories()
+        {
+            return View();
+        }
+        public IActionResult contact()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult contact(Feedback feedback)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.FeedBacks.Add(feedback);
+                    _context.SaveChanges();
+                    ViewBag.SuccessMessage = "Thank you for your feedback!we will answer it soon<3";
+                    ModelState.Clear();
+                    return View(new Feedback());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    if (ex.InnerException != null)
+                    {
+                        Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                    }
+                    ViewBag.Errormsg = "Something went wrong!";
+                    return View(feedback);
+                }
+            }
+            return View(feedback);
+        }
+        public IActionResult submitaproblem()
+        {
+            return View();
+        }
+       /* public async Task<IActionResult> Profile()
         {
             var user = await _userManager.GetUserAsync(User);
 
@@ -38,7 +80,33 @@ namespace Holoul.Controllers
             };
 
             return View(model);
+        }*/
+        public async Task<IActionResult> Profile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            // ✅ **جلب جميع الرسائل الخاصة بالمستخدم**
+            var feedbacks = await _context.FeedBacks
+                .Where(f => f.Email == user.Email) // 🔹 جلب فقط الرسائل التي تخص المستخدم الحالي
+                .OrderByDescending(f => f.CreatedAt) // 🔹 ترتيب الرسائل من الأحدث إلى الأقدم
+                .ToListAsync();
+
+            var model = new ProfileViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                Feedbacks = feedbacks // ✅ **تمرير قائمة الرسائل إلى الملف الشخصي**
+            };
+
+            return View(model);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -54,6 +122,7 @@ namespace Holoul.Controllers
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
+
 
             // Update the user's properties
             user.FirstName = model.FirstName;
