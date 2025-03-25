@@ -1,3 +1,200 @@
 ﻿@{
     Layout = "_AdminLayout";
 }
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link rel="stylesheet" href="~/css/dash.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <meta name="description" content="Simple Dashboard" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Add fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <!-- Dashboard content -->
+        <div class="dashboard-container">
+            <!-- Stats cards -->
+            <div class="stats-grid">
+                <div class="stat-card gradient-card">
+                    <div class="stat-info">
+                        <p class="stat-title">Users</p>
+                        <h3 class="stat-value">1,250</h3>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>15%</span>
+                            <span class="period">Compared to last month</span>
+                        </div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card gradient-card">
+                    <div class="stat-info">
+                        <p class="stat-title">Reported Issues</p>
+                        <h3 class="stat-value">83</h3>
+                        <div class="stat-change negative">
+                            <i class="fas fa-arrow-down"></i>
+                            <span>7.2%</span>
+                            <span class="period">Compared to last month</span>
+                        </div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                </div>
+
+                <div class="stat-card gradient-card">
+                    <div class="stat-info">
+                        <p class="stat-title">Feedback</p>
+                        <h3 class="stat-value">429</h3>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>12.5%</span>
+                            <span class="period">Compared to last month</span>
+                        </div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tables section -->
+            <div class="tables-section">
+                <div class="section-title">
+                    <h2>Latest Data</h2>
+                </div>
+
+                <!-- New Users Table -->
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>Latest Users</h3>
+                        <button class="view-all-btn">View All <i class="fas fa-chevron-left"></i></button>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Email</th>
+                                    <th>Registration Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    
+                                    <td>sara@example.com</td>
+                                    <td>3 Days Ago</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                </tr>
+                                <tr>
+                                    
+                                    <td>mohamed@example.com</td>
+                                    <td>5 Days Ago</td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                </tr>
+                                <tr>
+                                    
+                                    <td>noor@example.com</td>
+                                    <td>1 Week Ago</td>
+                                    <td><span class="status-badge inactive">Inactive</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Latest Issues Table -->
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>Latest Issues</h3>
+                        <button class="view-all-btn">View All <i class="fas fa-chevron-left"></i></button>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Issue Title</th>
+                                    <th>Reporter</th>
+                                    <th>Report Date</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Login Issue</td>
+                                   
+                                    <td>2 Days Ago</td>
+                                    <td><span class="priority-badge high">High</span></td>
+                                    <td><span class="status-badge pending">In Progress</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Payment Error</td>
+                                   
+                                    <td>4 Days Ago</td>
+                                    <td><span class="priority-badge medium">Medium</span></td>
+                                    <td><span class="status-badge resolved">Resolved</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Latest Feedback Table -->
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>Latest Feedback</h3>
+                        <button class="view-all-btn">View All <i class="fas fa-chevron-left"></i></button>
+                    </div>
+                    <div class="data-table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Date</th>
+                                    <th>Rating</th>
+                                    <th>Comment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                   
+                                    <td>3 Hours Ago</td>
+                                    <td>4.5</td>
+                                    <td>Great app, easy to use, and provides excellent service.</td>
+                                </tr>
+                                <tr>
+                                   
+                                    <td>5 Hours Ago</td>
+                                    <td>5.0</td>
+                                    <td>Excellent and fast service. I enjoyed using it!</td>
+                                </tr>
+                                <tr>
+                                   
+                                    <td>2 Days Ago</td>
+                                    <td>4.0</td>
+                                    <td>Good app, but some features need improvement.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
