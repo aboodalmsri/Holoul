@@ -1,47 +1,56 @@
 ﻿
-body {
+/*body {
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
+    padding: 0;*/
     /*    display: flex;*/
-    justify-content: center;
+    /*justify-content: center;
     align-items: center;
     height: 100vh;
-    /*    padding-top: 100px;*/
+    min-height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .land {
     position: relative;
     width: 100vw;
-    height: 80vh; /* يجعل الصورة تملأ الشاشة */
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
-    overflow: hidden;
-    margin-left: calc(-50vw + 50%); /* Center it relative to the viewport */
-    margin-right: calc(-50vw + 50%);
-}
+    box-sizing: border-box;*/
+    /*    overflow: hidden;*/
+    /*margin-bottom: 0;
+    padding-bottom: 0;*/
+    /*margin-left: calc(-50vw + 50%);*/ /* Center it relative to the viewport */
+    /*margin-right: calc(-50vw + 50%);*/
+/*}
 
     .land .img {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: 100vh;
     }
 
         .land .img img {
-            border-radius: 15px; /* حواف مستديرة */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* إضافة ظل */
-            width: 100%;
-            height: 64%;
+            border-radius: 15px;*/ /* حواف مستديرة */
+            /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);*/ /* إضافة ظل */
+            /*width: 100%;
+            height: 100vh;
             object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
-            filter: brightness(50%); /* يضيف تأثير تعتيم للخلفية */
-        }
+            filter: brightness(50%);*/ /* يضيف تأثير تعتيم للخلفية */
+        /*}
 
     .land .textl {
         position: relative;
@@ -54,9 +63,13 @@ body {
 
 html, body {
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 .about {
+    margin: 0;
+    box-sizing: border-box;
     background: #fff;
     padding: 40px;
     border-radius: 15px;
@@ -67,6 +80,8 @@ html, body {
     gap: 30px;
     position: relative;
     left: 0%;
+    top: 0;
+    margin-top: 0px;
 }
 
 .implusp1, .implusp2, .implusp3 {
@@ -131,4 +146,4 @@ html, body {
 
         .aboutimg img:hover {
             transform: scale(1.05);
-        }
+        }*/
