@@ -4,23 +4,25 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-/*    display: flex;*/
-/*    justify-content: center;*/
+    /*    display: flex;*/
+    justify-content: center;
     align-items: center;
     height: 100vh;
-/*    padding-top: 100px;*/
-    
+    /*    padding-top: 100px;*/
 }
+
 .land {
     position: relative;
-    width: 100%;
-    height: 120vh; /* يجعل الصورة تملأ الشاشة */
+    width: 100vw;
+    height: 80vh; /* يجعل الصورة تملأ الشاشة */
     display: flex;
-/*    align-items: center;*/
-/*    justify-content: center;*/
+    align-items: center;
+    justify-content: center;
     text-align: center;
     color: white;
     overflow: hidden;
+    margin-left: calc(-50vw + 50%); /* Center it relative to the viewport */
+    margin-right: calc(-50vw + 50%);
 }
 
     .land .img {
@@ -30,16 +32,15 @@ body {
     }
 
         .land .img img {
-            width:100vw;
-            margin-left:0;
-            margin-right:0;
-            
-            height: 100%;
+            border-radius: 15px; /* حواف مستديرة */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* إضافة ظل */
+            width: 100%;
+            height: 64%;
             object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
-           
+            filter: brightness(50%); /* يضيف تأثير تعتيم للخلفية */
         }
 
     .land .textl {
@@ -54,6 +55,7 @@ body {
 html, body {
     overflow-x: hidden;
 }
+
 .about {
     background: #fff;
     padding: 40px;
