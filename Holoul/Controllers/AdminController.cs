@@ -26,6 +26,10 @@ namespace Holoul.Controllers
         {
             return View();
         }
+        public IActionResult Dashbord()
+        {
+            return View();
+        }
         public async Task<IActionResult> feedback()
         {
             var feedbacks = await _context.FeedBacks

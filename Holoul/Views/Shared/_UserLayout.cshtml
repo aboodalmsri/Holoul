@@ -57,10 +57,11 @@
 
             <nav class="main-nav">
                 <ul>
-                    <li><a asp-controller="Home" asp-action="Index" class="nav-link">Home</a></li>
-                    <li><a asp-controller="Home" asp-action="Privacy" class="nav-link">Privacy</a></li>
-                    <li><a asp-controller="Home" asp-action="About" class="nav-link">About Us</a></li>
-                    <li><a asp-controller="Home" asp-action="contact" class="nav-link">Contact Us</a></li>
+                    <li><a asp-controller="User" asp-action="profile" class="nav-link">profile</a></li>
+                    <li><a asp-controller="User" asp-action="Dashbord" class="nav-link">Home</a></li>
+                    <li><a asp-controller="User" asp-action="categories" class="nav-link">categories</a></li>
+                    <li><a asp-controller="User" asp-action="submitaproblem" class="nav-link">Solve With Ai</a></li>
+                    <li><a asp-controller="User" asp-action="contact" class="nav-link">contact Us</a></li>
                 </ul>
             </nav>
             <partial name="_LoginPartial" />
