@@ -22,6 +22,8 @@ namespace Holoul.Models
         [Required(ErrorMessage = "Message is required")]
         [StringLength(5000, ErrorMessage = "Message cannot exceed 5000 characters")]
         public string Message { get; set; }
+        public string? ReplyMessage { get; set; }
+
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public bool IsReplied { get; set; } = false;

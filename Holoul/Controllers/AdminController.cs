@@ -62,9 +62,9 @@ namespace Holoul.Controllers
 
             return RedirectToAction(nameof(feedback));
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ReplyToFeedback(int id, string Subject, string Message, string Email)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        /*public async Task<IActionResult> ReplyToFeedback(int id, string Subject, string Message, string Email)
         {
             var feedback = await _context.FeedBacks.FindAsync(id);
 
@@ -91,7 +91,40 @@ namespace Holoul.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }*/
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ReplyToFeedback(int id, string Subject, string Message, string Email)
+        {
+            var feedback = await _context.FeedBacks.FindAsync(id);
+
+            if (feedback == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                // حفظ الرد داخل قاعدة البيانات
+                feedback.IsReplied = true;
+                feedback.RepliedAt = DateTime.Now;
+                feedback.ReplyMessage = Message; // ✅ **جديد: حفظ نص الرد**  
+
+                await _context.SaveChangesAsync(); // حفظ التغييرات في قاعدة البيانات
+
+                // إرسال الرد بالبريد الإلكتروني
+                await SendEmailReply(Email, Subject, Message);
+
+                TempData["SuccessMessage"] = "تم إرسال الرد وحفظه في قاعدة البيانات بنجاح!";
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "حدث خطأ أثناء إرسال الرد: " + ex.Message;
+            }
+
+            return RedirectToAction(nameof(feedback));
         }
+
 
         // Method to send email
         private async Task SendEmailReply(string toEmail, string subject, string message)
