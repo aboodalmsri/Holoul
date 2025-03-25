@@ -17,7 +17,47 @@ namespace Holoul.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public IActionResult Index()
+        public IActionResult Dashbord()
+        {
+            return View();
+        }
+        public IActionResult categories()
+        {
+            return View();
+        }
+        public IActionResult contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult contact(Feedback feedback)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.FeedBacks.Add(feedback);
+                    _context.SaveChanges();
+                    ViewBag.SuccessMessage = "Thank you for your feedback!";
+                    ModelState.Clear();
+                    return View(new Feedback());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    if (ex.InnerException != null)
+                    {
+                        Console.WriteLine($"Inner Exception: {ex.InnerException.Message}");
+                    }
+                    ViewBag.Errormsg = "Something went wrong!";
+                    return View(feedback);
+                }
+            }
+            return View(feedback);
+        }
+        public IActionResult submitaproblem()
         {
             return View();
         }
