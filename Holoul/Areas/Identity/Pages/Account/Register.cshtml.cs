@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System.Net.Mail;
+using System.Net;
 
 namespace Holoul.Areas.Identity.Pages.Account
 {
@@ -165,6 +167,37 @@ namespace Holoul.Areas.Identity.Pages.Account
             // If we got this far, something failed, redisplay form
             return Page();
         }
+
+
+        //private async Task<bool> SendEmailAsync(string email, string subject, string confirmLink)
+        //{
+        //    try
+        //    {
+        //        MailMessage message = new MailMessage();
+        //        SmtpClient smtpClient = new SmtpClient();
+        //        message.From = new MailAddress("Holoul2025@gmail.com");
+        //        message.To.Add(email);
+        //        message.Subject = subject;
+        //        message.IsBodyHtml = true; message.Body = confirmLink;
+        //        message.Body = confirmLink;
+
+        //        smtpClient.Port = 465;
+        //        smtpClient.Host = "smtp.gmail.com";
+
+        //        smtpClient.EnableSsl = true;
+        //        smtpClient.UseDefaultCredentials = false;
+        //        smtpClient.Credentials = new NetworkCredential("Holoul2025@gmail.com", "Holoul123452@2025support");
+        //        smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //        smtpClient.Send(message);
+
+        //        return true;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return false;
+
+        //    }
+        //}
 
         private HoloulUser CreateUser()
         {
