@@ -35,6 +35,7 @@ namespace Holoul.Controllers
         }
         public async Task<IActionResult> feedback()
         {
+           
             var feedbacks = await _context.FeedBacks
                 .OrderByDescending(f => f.CreatedAt)
                 .ToListAsync();
