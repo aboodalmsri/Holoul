@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Holoul.Models.Feedback>
+@{
     Layout = "_AdminLayout";
 }
 <!DOCTYPE html>
@@ -186,46 +187,26 @@
                         <table class="data-table">
                             <thead>
                                 <tr>
-                                    <th>User</th>
+                                    <th>Name</th>
                                     <th>Date</th>
-                                    <th>Rating</th>
-                                    <th>Comment</th>
+                                    <th>Subject</th>
+                                    <th>Is Replied</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (var feedback in Model){
                                 <tr>
                                     <td class="user-cell">
                                         
                                         <div>
-                                            <p class="user-name">Omar Khaled</p>
+                                            <p class="user-name">@feedback.Name</p>
                                         </div>
                                     </td>
-                                    <td>3 Hours Ago</td>
-                                    <td>4.5</td>
-                                    <td>Great app, easy to use, and provides excellent service.</td>
+                                    <td>@feedback.CreatedAt</td>
+                                    <td>@feedback.Subject</td>
+                                    <td>@feedback.IsReplied</td>
                                 </tr>
-                                <tr>
-                                    <td class="user-cell">
-                                        
-                                        <div>
-                                            <p class="user-name">Ahmed Fouad</p>
-                                        </div>
-                                    </td>
-                                    <td>5 Hours Ago</td>
-                                    <td>5.0</td>
-                                    <td>Excellent and fast service. I enjoyed using it!</td>
-                                </tr>
-                                <tr>
-                                    <td class="user-cell">
-                                        
-                                        <div>
-                                            <p class="user-name">Jamila Nasser</p>
-                                        </div>
-                                    </td>
-                                    <td>2 Days Ago</td>
-                                    <td>4.0</td>
-                                    <td>Good app, but some features need improvement.</td>
-                                </tr>
+                                }
                             </tbody>
                         </table>
                     </div>

@@ -26,9 +26,12 @@ namespace Holoul.Controllers
         {
             return View();
         }
-        public IActionResult Dashbord()
+        public async Task<IActionResult> Dashbord()
         {
-            return View();
+            var feedbacks = await _context.FeedBacks
+                .OrderByDescending(f => f.CreatedAt)
+                .ToListAsync();
+            return View(feedbacks);
         }
         public async Task<IActionResult> feedback()
         {
