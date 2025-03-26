@@ -13,15 +13,19 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Logging;
+using System.Net.Mail;
+using System.Net;
+using Holoul.Areas.Identity.Data;
 
 namespace Holoul.Areas.Identity.Pages.Account
 {
     public class ForgotPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<HoloulUser> _userManager;
         private readonly IEmailSender _emailSender;
 
-        public ForgotPasswordModel(UserManager<IdentityUser> userManager, IEmailSender emailSender)
+        public ForgotPasswordModel(UserManager<HoloulUser> userManager, IEmailSender emailSender)
         {
             _userManager = userManager;
             _emailSender = emailSender;
@@ -79,6 +83,36 @@ namespace Holoul.Areas.Identity.Pages.Account
             }
 
             return Page();
+        }
+
+        private async Task<bool> SendEmailAsync(string email, string subject, string confirmLink)
+        {
+            try
+            {
+                MailMessage message = new MailMessage();
+                SmtpClient smtpClient = new SmtpClient();
+                message.From = new MailAddress("Holoul2025@gmail.com");
+                message.To.Add(email);
+                message.Subject = subject;
+                message.IsBodyHtml = true; message.Body = confirmLink;
+                message.Body = confirmLink;
+
+                smtpClient.Port = 587;
+                smtpClient.Host = "smtp.gmail.com";
+
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.Credentials = new NetworkCredential("Holoul2025@gmail.com", "Holoul123452@2025support");
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.Send(message);
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+
+            }
         }
     }
 }
