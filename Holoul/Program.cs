@@ -10,7 +10,7 @@ var connectionString = builder.Configuration.GetConnectionString("EDbContextConn
 builder.Services.AddDbContext<EDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<HoloulUser>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddDefaultIdentity<HoloulUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<EDbContext>();
 
