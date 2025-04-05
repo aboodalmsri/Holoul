@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Holoul.Migrations
 {
     [DbContext(typeof(EDbContext))]
-    [Migration("20250325203722_AddAdminReplyToFeedback")]
-    partial class AddAdminReplyToFeedback
+    [Migration("20250328170108_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

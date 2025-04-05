@@ -13,6 +13,7 @@ namespace Holoul.Models
         public DateTime ReportDate { get; set; }
         public string YouTubeVideoURL { get; set; }
 
+        //relations
         public Category Category { get; set; }
         public ICollection<AISolutionStep> AISolutionSteps { get; set; }
     }
