@@ -18,7 +18,7 @@ namespace Holoul.Controllers
             _context = context;
             _userManager = userManager;
         }
-        public IActionResult SolutionPage()
+        public IActionResult Solution()
         {
             return View();
         }
@@ -67,24 +67,29 @@ namespace Holoul.Controllers
         {
             return View();
         }
-       /* public async Task<IActionResult> Profile()
+
+        public IActionResult solutionfortheproblem()
         {
-            var user = await _userManager.GetUserAsync(User);
+            return View();
+        }
+        /* public async Task<IActionResult> Profile()
+         {
+             var user = await _userManager.GetUserAsync(User);
 
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
-            }
+             if (user == null)
+             {
+                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+             }
 
-            var model = new ProfileViewModel
-            {
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email
-            };
+             var model = new ProfileViewModel
+             {
+                 FirstName = user.FirstName,
+                 LastName = user.LastName,
+                 Email = user.Email
+             };
 
-            return View(model);
-        }*/
+             return View(model);
+         }*/
         public async Task<IActionResult> Profile()
         {
             var user = await _userManager.GetUserAsync(User);
