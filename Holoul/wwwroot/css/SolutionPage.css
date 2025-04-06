@@ -45,7 +45,7 @@ h2 {
     min-width: 300px;
 }
 
-ul {
+.content ul {
     list-style: disc inside;
     font-size: 1.1rem;
     line-height: 1.8;
