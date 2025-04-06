@@ -18,6 +18,10 @@ namespace Holoul.Controllers
             _context = context;
             _userManager = userManager;
         }
+        public IActionResult SolutionPage()
+        {
+            return View();
+        }
         public IActionResult Dashbord()
         {
             return View();
@@ -29,11 +33,6 @@ namespace Holoul.Controllers
         public IActionResult contact()
         {
             
-            return View();
-        }
-        public IActionResult SolutionPage()
-        {
-
             return View();
         }
 
