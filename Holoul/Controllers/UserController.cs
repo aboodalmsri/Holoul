@@ -31,6 +31,11 @@ namespace Holoul.Controllers
             
             return View();
         }
+        public IActionResult SolutionPage()
+        {
+
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
