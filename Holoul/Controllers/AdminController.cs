@@ -28,6 +28,7 @@ namespace Holoul.Controllers
         }
         public async Task<IActionResult> Dashbord()
         {
+
             var feedbacks = await _context.FeedBacks
                 .OrderByDescending(f => f.CreatedAt)
                 .ToListAsync();
