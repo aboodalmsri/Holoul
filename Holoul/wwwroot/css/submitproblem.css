@@ -1,0 +1,431 @@
+﻿:root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --border: 214.3 31.8% 91.4%;
+    --radius: 0.8rem;
+    --font-sans: 'SF Pro Display', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: linear-gradient(to bottom, hsl(var(--background)), white);
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container-submit {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 2.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header-submit {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+    .header-submit h1 {
+        font-weight: 600;
+        font-size: 1.875rem;
+        margin-bottom: 0.5rem;
+        color: hsl(var(--foreground));
+    }
+
+    .header-submit p {
+        font-size: 1.125rem;
+        color: hsl(215.4 16.3% 46.9%);
+    }
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* Glass Panel Styling */
+.glass-panel {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+/* Solution Area */
+.solution-area {
+    transition: all 0.3s ease;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+    .solution-area.empty {
+        height: 0;
+        padding: 0;
+        opacity: 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .solution-area.filled {
+        height: auto;
+        opacity: 1;
+        margin-bottom: 1.5rem;
+    }
+
+.solution-content h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: hsl(var(--foreground));
+}
+
+.solution-content p {
+    color: hsl(215 10% 30%);
+    white-space: pre-line;
+    line-height: 1.6;
+}
+
+/* Problem Input Area */
+.problem-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.25rem 0.75rem;
+}
+
+    .input-header h3 {
+        font-size: 1.125rem;
+        font-weight: 500;
+        color: hsl(var(--foreground));
+    }
+
+.clear-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: hsl(215 16% 47%);
+    padding: 0.25rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+    .clear-button:hover {
+        color: hsl(var(--foreground));
+        background-color: hsla(var(--secondary), 0.8);
+    }
+
+    .clear-button.hidden {
+        display: none;
+    }
+
+.textarea-container {
+    padding: 0 1.25rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    resize: none;
+    border: none;
+    background: transparent;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: hsl(var(--foreground));
+    padding: 0;
+    overflow: hidden;
+}
+
+    textarea:focus {
+        outline: none;
+    }
+
+    textarea::placeholder {
+        color: hsl(215 16% 65%);
+    }
+
+/* File Preview Area */
+.file-preview {
+    padding: 1rem 1.25rem;
+    transition: all 0.3s ease;
+}
+
+    .file-preview.hidden {
+        display: none;
+    }
+
+    .file-preview p {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: hsl(215 10% 40%);
+        margin-bottom: 0.5rem;
+    }
+
+.file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    color: hsl(215 10% 30%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+    .file-item svg {
+        width: 14px;
+        height: 14px;
+        margin-right: 0.375rem;
+        color: hsl(215 16% 47%);
+    }
+
+    .file-item span {
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .file-item button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: hsl(215 16% 47%);
+        margin-left: 0.375rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.125rem;
+        transition: color 0.2s;
+    }
+
+        .file-item button:hover {
+            color: hsl(var(--foreground));
+        }
+
+/* Action Area */
+.action-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background-color: hsla(var(--secondary), 0.8);
+    border-top: 1px solid hsla(var(--border), 0.8);
+    transition: all 0.2s;
+}
+
+    .action-area.drag-active {
+        border: 2px dashed hsl(var(--primary));
+        background-color: hsla(var(--primary), 0.05);
+    }
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.file-button {
+    display: flex;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: hsl(215 16% 47%);
+    transition: color 0.2s, background-color 0.2s;
+}
+
+    .file-button:hover {
+        color: hsl(var(--primary));
+        background-color: hsla(var(--secondary), 1);
+    }
+
+.upload-text {
+    font-size: 0.875rem;
+    color: hsl(215 16% 47%);
+}
+
+.submit-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: hsl(var(--primary));
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    overflow: hidden;
+}
+
+    .submit-button:disabled {
+        background-color: hsla(210 40% 96.1%, 1);
+        color: hsla(215 16% 65%, 1);
+        cursor: not-allowed;
+    }
+
+    .submit-button:not(:disabled):hover {
+        background-color: hsla(var(--primary), 0.9);
+    }
+
+    .submit-button:not(:disabled):active {
+        transform: scale(0.95);
+    }
+
+/* Loading Indicator */
+.loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+    .loading-indicator.hidden {
+        display: none;
+    }
+
+.spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid hsla(var(--primary), 0.2);
+    border-top-color: hsl(var(--primary));
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 0.75rem;
+}
+
+.loading-indicator p {
+    color: hsl(215 16% 47%);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Loading Dots */
+.loading-dots::after {
+    content: "";
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% {
+        content: ".";
+    }
+
+    40% {
+        content: "..";
+    }
+
+    60%, 100% {
+        content: "...";
+    }
+}
+
+/* Ripple Effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Fade In Animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container-submit {
+        padding: 1.5rem 1rem;
+    }
+
+    .header-submit h1 {
+        font-size: 1.5rem;
+    }
+
+    .header-submit p {
+        font-size: 1rem;
+    }
+
+    .upload-text {
+        display: none;
+    }
+
+    .action-area {
+        padding: 0.75rem;
+    }
+
+    .file-upload {
+        gap: 0.25rem;
+    }
+}
+
+.hidden {
+    display: none;
+}
