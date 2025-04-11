@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Holoul.Areas.Identity.Data;
+using Microsoft.Extensions.Configuration;
+using Holoul.services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,12 @@ builder.Services.AddDefaultIdentity<HoloulUser>(options => options.SignIn.Requir
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+builder.Services.Configure<GeminiSettings>(builder.Configuration.GetSection("Gemini"));
+builder.Services.AddScoped<GeminiService>();
+
+
 
 var app = builder.Build();
 
@@ -43,7 +51,7 @@ using (var scope = app.Services.CreateScope())
 {
     var RoleManager =
         scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    var roles = new[] { "Admin", "User"};
+    var roles = new[] { "Admin", "User" };
     foreach (var role in roles)
     {
         if (!await RoleManager.RoleExistsAsync(role))
@@ -56,6 +64,7 @@ using (var scope = app.Services.CreateScope())
     var userManager =
         scope.ServiceProvider.GetRequiredService<UserManager<HoloulUser>>();
     string email = "AdminHoloul@Admin.com";
+    string email1 = "TestHoloul@User.com";
     string password = "Test@1234";
 
 
@@ -73,8 +82,28 @@ using (var scope = app.Services.CreateScope())
 
         await userManager.AddToRoleAsync(user, "Admin");
 
+    }
+
+    if (await userManager.FindByEmailAsync(email1) == null)
+    {
+
+        var user = new HoloulUser();
+
+        user.UserName = email1;
+        user.Email = email1;
+        user.EmailConfirmed = true;
+        user.FirstName = "User";
+        user.LastName = "Test";
+        await userManager.CreateAsync(user, password);
+
+        await userManager.AddToRoleAsync(user, "User");
 
     }
 }
 
 app.Run();
+
+public class GeminiSettings
+{
+    public string? ApiKey { get; set; }
+}

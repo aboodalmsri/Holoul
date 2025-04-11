@@ -49,49 +49,6 @@
 
                     <button type="submit" class="btn btn-primary dashboard-btn">حفظ التغييرات</button>
                 </form>
-                <h2>الرسائل والردود</h2>
-
-                @if (Model.Feedbacks != null && Model.Feedbacks.Any())
-                {
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>الموضوع</th>
-                                <th>الرسالة</th>
-                                <th>رد المسؤول</th> <!-- العمود الجديد لعرض الرد -->
-                                <th>تاريخ الإرسال</th>
-                                <th>تاريخ الرد</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var feedback in Model.Feedbacks)
-                            {
-                                <tr>
-                                    <td>@feedback.Subject</td>
-                                    <td>@feedback.Message</td>
-                                    <td>
-                                        @if (feedback.IsReplied)
-                                        {
-                                            <span class="text-success">تم الرد: @feedback.ReplyMessage</span> <!-- عرض نص الرد -->
-                                        }
-                                        else
-                                        {
-                                            <span class="text-danger">لم يتم الرد بعد</span>
-                                        }
-                                    </td>
-                                    <td>@feedback.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
-                                    <td>@(feedback.RepliedAt.HasValue ? feedback.RepliedAt.Value.ToString("yyyy-MM-dd HH:mm") : "—")</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
-                else
-                {
-                    <p class="text-muted">لم تقم بإرسال أي رسائل حتى الآن.</p>
-                }
-
-
             </div>
         </div>
     </div>

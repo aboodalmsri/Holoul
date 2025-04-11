@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Holoul.Models;
 using Microsoft.EntityFrameworkCore;
 using Holoul.Areas.Identity.Data;
+using GenerativeAI;
 
 namespace Holoul.Controllers;
 
@@ -10,12 +11,26 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly EDbContext _context;
+    private readonly GeminiService _geminiService;
 
-    public HomeController(ILogger<HomeController> logger, EDbContext context)
+    public HomeController(ILogger<HomeController> logger, EDbContext context, GeminiService geminiService)
     {
         _logger = logger;
         _context = context;
+        _geminiService = geminiService;
     }
+
+    //AI
+    public async Task<IActionResult> test()
+    {
+        string prompt = "Hi";
+        string result = await _geminiService.GenerateTextAsync(prompt);
+        ViewBag.Response = result;
+
+        return View();
+    }
+
+
 
     public IActionResult Index()
     {

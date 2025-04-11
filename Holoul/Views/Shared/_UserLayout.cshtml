@@ -21,7 +21,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin asp-append-version="true" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
           rel="stylesheet" asp-append-version="true" />
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
 
 </head>
 
@@ -52,10 +51,11 @@
             <nav class="main-nav">
                 <ul>
                     <li><a asp-controller="User" asp-action="profile" class="nav-link">profile</a></li>
-                    <li><a asp-controller="User" asp-action="Dashbord" class="nav-link">Home</a></li>
+                    <li><a asp-controller="User" asp-action="index" class="nav-link">Home</a></li>
                     <li><a asp-controller="User" asp-action="categories" class="nav-link">categories</a></li>
                     <li><a asp-controller="User" asp-action="submitaproblem" class="nav-link">Solve With Ai</a></li>
                     <li><a asp-controller="User" asp-action="contact" class="nav-link">contact Us</a></li>
+                    <li><a asp-controller="User" asp-action="MyReports" class="nav-link">My Reports</a></li>
                 </ul>
             </nav>
             <partial name="_LoginPartial" />

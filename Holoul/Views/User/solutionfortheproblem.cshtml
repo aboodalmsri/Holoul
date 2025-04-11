@@ -1,42 +1,44 @@
-﻿@{
-    Layout = "_UserLayout";
+﻿@model Holoul.Models.ProblemViewModel
+
+@{
+    ViewData["Title"] = "حل المشكلة";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Video Page</title>
-    <link rel="stylesheet" href="~/css/SolutionPage.css">
-</head>
-<body>
+<h1>حل المشكلة</h1>
 
-    <h1>This Video Shows the steps to solve the problem</h1>
+<div>
+    <h4>وصف المشكلة</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProblemDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProblemDescription)
+        </dd>
 
-    <div class="video-container">
-        <video controls>
-            <source src="https://www.youtube.com/watch?v=5SSMT-uxINw" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        @if (Model.ProblemImage != null)
+        {
+            <dt class="col-sm-2">
+                صورة المشكلة
+            </dt>
+            <dd class="col-sm-10">
+                <img src="@Model.ProblemImage" alt="Problem Image" style="max-width: 300px;" />
+            </dd>
+        }
+    </dl>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.AiSolution))
+{
+    <div>
+        <h4>حل الذكاء الاصطناعي</h4>
+        <p>
+            @Html.Raw(Model.AiSolution.Replace("\n", "<br />"))
+        </p>
     </div>
-
-    <h2>A Brief Explanation In Simple Steps</h2>
-
-    <div class="content">
-        <div class="text">
-            <ul>
-                <li>Step One: Simple Description.</li>
-                <li>Step Two: Another Key Point.</li>
-                <li>Step Three: Final Touch.</li>
-            </ul>
-        </div>
-
-        <div class="image">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE2g2MRia0xdSF_m8IHR9v24gVJnPk9nAfpg&s" alt="Explanation Image">
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+}
+else
+{
+    <p>لم يتم العثور على حل.</p>
+}

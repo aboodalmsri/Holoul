@@ -132,7 +132,7 @@ namespace Holoul.Areas.Identity.Pages.Account
                     }
                     else if (await _userManager.IsInRoleAsync(user, "User"))
                     {
-                        return RedirectToAction("Dashbord", "User");
+                        return RedirectToAction("index", "User");
                     }
                     else
                     {

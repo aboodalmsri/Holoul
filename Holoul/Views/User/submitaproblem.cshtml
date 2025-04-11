@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Holoul.Models.ProblemViewModel
+
+@{
     Layout = "_UserLayout";
 }
 
@@ -34,6 +36,8 @@
                     <p>Finding the best solution<span class="loading-dots"></span></p>
                 </div>
             </div>
+            <form asp-action="submitaproblem" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <!-- Problem Input Area -->
             <div class="problem-input glass-panel">
@@ -45,7 +49,8 @@
                 </div>
 
                 <div class="textarea-container">
-                    <textarea id="problem-input" placeholder="What home problem can I help you solve today?"></textarea>
+                    <textarea id="problem-input" asp-for="ProblemDescription" placeholder="What home problem can I help you solve today?"></textarea>
+                    <span asp-validation-for="ProblemDescription" class="text-danger"></span>
                 </div>
 
                 <!-- File Preview Area -->
@@ -59,16 +64,19 @@
                     <div class="file-upload">
                         <input type="file" id="file-input" multiple hidden>
                         <button id="file-button" class="file-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" asp-for="ProblemImage" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                            <span asp-validation-for="ProblemImage" class="text-danger"></span>
                         </button>
                         <p class="upload-text">Drag & drop or click to attach files</p>
                     </div>
 
-                    <button id="submit-button" class="submit-button" disabled>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="16 12 12 8 8 12"></polyline><line x1="12" y1="16" x2="12" y2="8"></line></svg>
-                    </button>
+                    <div class="form-group">
+                        <input type="submit" value="احصل على الحل" class="btn btn-primary" />
+                    </div>
                 </div>
             </div>
+            </form>
+
         </main>
     </div>
 
@@ -77,3 +85,9 @@
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
 </body>
 </html>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,4 +1,5 @@
-﻿using Holoul.Areas.Identity.Data;
+﻿using Google.Api;
+using Holoul.Areas.Identity.Data;
 using Holoul.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,18 +13,33 @@ namespace Holoul.Controllers
     {
         private readonly EDbContext _context;
         private readonly UserManager<HoloulUser> _userManager;
+        private readonly GeminiService _geminiService;
+        private readonly IWebHostEnvironment _environment;
+        private readonly ILogger<UserController> _logger;
 
-        public UserController(EDbContext context, UserManager<HoloulUser> userManager)
+        public UserController(EDbContext context, UserManager<HoloulUser> userManager, GeminiService geminiService, IWebHostEnvironment environment, ILogger<UserController> logger)
         {
             _context = context;
             _userManager = userManager;
+            _geminiService = geminiService;
+            _environment = environment;
+            _logger = logger;
         }
-        public IActionResult Solution()
+
+        public IActionResult solutionfortheproblem(ProblemViewModel model)
         {
-            return View();
+            return View(model);
         }
-        public IActionResult Dashbord()
+
+
+        public IActionResult index()
         {
+            int usersCount = _context.Users.Count();
+            int categorysCount = _context.Categorys.Count();
+
+            ViewData["UsersCount"] = usersCount;
+            ViewData["CategoriesCount"] = categorysCount;
+
             return View();
         }
         public IActionResult categories()
@@ -35,6 +51,24 @@ namespace Holoul.Controllers
             
             return View();
         }
+
+        public async Task<IActionResult> MyReports()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            var feedbacks = await _context.FeedBacks
+                .Where(f => f.Email == user.Email) 
+                .OrderByDescending(f => f.CreatedAt) 
+                .ToListAsync();
+
+            return View(feedbacks);
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -67,11 +101,63 @@ namespace Holoul.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
 
-        public IActionResult solutionfortheproblem()
+        public async Task<IActionResult> submitaproblem(ProblemViewModel model)
         {
-            return View();
+
+            if (ModelState.IsValid)
+            {
+                string? imagePath = null;
+
+                if (model.ProblemImage != null)
+                {
+                    string uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ProblemImage.FileName;
+                    imagePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                    try
+                    {
+                        Directory.CreateDirectory(uploadsFolder); 
+
+                        using (var fileStream = new FileStream(imagePath, FileMode.Create))
+                        {
+                            await model.ProblemImage.CopyToAsync(fileStream);
+                        }
+                        imagePath = "/uploads/" + uniqueFileName; 
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "خطأ في حفظ الصورة.");
+                        ModelState.AddModelError("", "حدث خطأ أثناء تحميل الصورة.");
+                        return View(model);
+                    }
+                }
+                string prompt = $"Problem Description: {model.ProblemDescription}";
+                if (imagePath != null)
+                {
+                    prompt += $", Image Path: {imagePath}";
+                }
+
+                try
+                {
+                    model.AiSolution = await _geminiService.GenerateTextAsync(prompt);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "خطأ في استدعاء خدمة Gemini.");
+                    ModelState.AddModelError("", "حدث خطأ أثناء الاتصال بخدمة الذكاء الاصطناعي.");
+                    return View(model);
+                }
+
+                return View("solutionfortheproblem", model); 
+            }
+
+            return View(model);
+
         }
+
         /* public async Task<IActionResult> Profile()
          {
              var user = await _userManager.GetUserAsync(User);
